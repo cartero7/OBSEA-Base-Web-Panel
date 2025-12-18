@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cámaras OBSEA</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background: #f4f4f4; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      padding: 2rem 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: #0078d7;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .cams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .cam-container {
+      background: #f9f9f9;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      padding: 1rem 0.5rem 1.5rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cam-container .label {
+      font-weight: 600;
+      color: #0078d7;
+      margin-bottom: 0.7rem;
+      text-align: center;
+    }
+    .cam-container iframe {
+      width: 100%;
+      min-width: 0;
+      max-width: 480px;
+      aspect-ratio: 16/9;
+      border: none;
+      border-radius: 0.7rem;
+      background: #000;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    @media (max-width: 900px) {
+      .container {
+        padding: 1rem 0.2rem;
+      }
+      .cams-grid {
+        gap: 1.2rem;
+      }
+    }
+    @media (max-width: 700px) {
+      .cams-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .container {
+        padding: 0.5rem 0.1rem;
+      }
+      h1 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Listado de Cámaras</h1>
+    <div class="cams-grid">
+      <div class="cam-container"><div class="label">OBSEA_UPC</div><iframe id="cam1" src="https://www.youtube.com/embed/live_stream?channel=UCnRRrUdQN4vTpw9EnOp_YwA" allowfullscreen></iframe></div>
+      <div class="cam-container"><div class="label">obsea_upc_live</div><iframe id="cam2" src="https://www.youtube.com/embed/live_stream?channel=UCbwLiUXu_TfeUm_pW5Cl_Hw" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="cam-container"><div class="label">obsea_cam1</div><iframe id="cam3" src="https://www.youtube.com/embed/live_stream?channel=UCkdi7njl0MIpDW4uqvIbi6A" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="cam-container"><div class="label">obsea_cam_3</div><iframe id="cam4" src="https://www.youtube.com/embed/live_stream?channel=UCZpygJ1pPbsWxNVW2-tGDDg" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="cam-container"><div class="label">marina_palamos</div><iframe id="cam5" src="https://www.youtube.com/embed/live_stream?channel=UChzi9vuInmiRRHPCrtLCh6w" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="cam-container"><div class="label">carpa_cam</div><iframe id="cam6" src="https://www.youtube.com/embed/live_stream?channel=UCu1CWrDcxHlDO2vj4vmx3GQ" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="cam-container"><div class="label">lab_cam</div><iframe id="cam7" src="https://www.youtube.com/embed/live_stream?channel=UCsQyuqcwq-U4OlCJeaJ45ZQ" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="cam-container"><div class="label">obsea_ai</div><iframe id="cam8" src="https://www.youtube.com/embed/live_stream?channel=UCkSun8SUrNpiKYXZSicJiHA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="cam-container"><div class="label">obsea_cam7</div><iframe id="cam9" src="https://www.youtube.com/embed/live_stream?channel=UCo2QsaapoQvggqPEjj5KXvQ" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="cam-container"><div class="label">obsea_cam8</div><iframe id="cam10" src="https://www.youtube.com/embed/live_stream?channel=UCmj6lVQNpoRrGQxhM3GkH4A" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="cam-container"><div class="label">obsea_cam9</div><iframe id="cam11" src="https://www.youtube.com/embed/live_stream?channel=UCk0Mu56B_zwvKpxyvpxp6ZA" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <!-- Nuevas cámaras -->
+      <div class="cam-container"><div class="label">po_1</div><iframe id="cam12" src="https://www.youtube.com/embed/live_stream?channel=UCQFXozj5Tz0Ys3Q0GYPe4Pw" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="cam-container"><div class="label">po_2</div><iframe id="cam13" src="https://www.youtube.com/embed/live_stream?channel=UCba0QK4DxLr8M_HojIO1Ydw" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="cam-container"><div class="label">po_3</div><iframe id="cam14" src="https://www.youtube.com/embed/live_stream?channel=UCI5HWibnupZ4_kH4fncBl4g" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="cam-container"><div class="label">po_4</div><iframe id="cam15" src="https://www.youtube.com/embed/live_stream?channel=UC27XzGMM2uDUg1feSRvn38Q" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+    </div>
+  </div>
+  <style>
+    .cams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .cam-container {
+      background: #f9f9f9;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      padding: 1rem 0.5rem 1.5rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cam-container .label {
+      font-weight: 600;
+      color: #0078d7;
+      margin-bottom: 0.7rem;
+      text-align: center;
+    }
+    .cam-container iframe {
+      width: 320px;
+      height: 180px;
+      border: none;
+      border-radius: 0.7rem;
+      background: #000;
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 700px) {
+      .cams-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .cam-container iframe {
+        width: 100%;
+        min-width: 0;
+        height: 180px;
+      }
+    }
+  </style>
+</body>
+</html>
