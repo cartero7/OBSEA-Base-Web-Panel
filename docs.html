@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Documentación</title>
+
+  <script>
+    (function () {
+      if (location.hostname.endsWith('github.io')) {
+        var base = document.createElement('base');
+        base.href = '/OBSEA-Base-Web-Panel/';
+        document.head.appendChild(base);
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css?v=20251219-6" />
+
+  <style>
+    .page{ min-height: 100svh; display: grid; place-items: center; padding: clamp(18px, 4vw, 54px); }
+    .top{ width: min(900px, 100%); text-align: center; margin-bottom: 20px; }
+    .title{ margin: 0; font-size: clamp(16px, 2.2vw, 22px); font-weight: 650; }
+    .sub{ margin: 6px 0 0; font-size: 13px; color: rgba(11,18,32,.55); }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="top">
+      <h1 class="title">Documentación</h1>
+      <p class="sub">Excels y recursos compartidos</p>
+    </header>
+
+    <nav class="grid" aria-label="Documentación">
+      <a class="item" href="https://files.obsea.es/" target="_blank" rel="noopener">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-cloud-arrow-down"></i></span>
+        <span class="label">Files OBSEA</span>
+      </a>
+
+      <a class="item" href="https://docs.google.com/spreadsheets/d/1FrwU6oj96k8ik6zymuB6dPfDClTRSObt1DLEa4HqoLA/edit?gid=1084776252#gid=1084776252"
+         target="_blank" rel="noopener">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-diagram-project"></i></span>
+        <span class="label">Projects<br>Managment</span>
+      </a>
+
+      <a class="item" href="https://docs.google.com/spreadsheets/d/1BCW8W4ISXgDVLVZsRlTq5KuqLIUBtL5BwVhQdg7ZvlQ/edit?gid=0#gid=0"
+         target="_blank" rel="noopener">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-file-lines"></i></span>
+        <span class="label">Publication<br>2025</span>
+      </a>
+
+      <a class="item" href="https://docs.google.com/spreadsheets/d/1VHcm2wqcDrXvio6o6FzNWcBHaqE5sMaUhuvjew3pAGY/edit?gid=333485662#gid=333485662"
+         target="_blank" rel="noopener">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-list-check"></i></span>
+        <span class="label">Projects<br>Tasks</span>
+      </a>
+
+      <a class="item" href="https://docs.google.com/spreadsheets/d/128vq9txRFV0r2s2hxmt7Lk8YwQKBkrXBx5XI0dvA3gM/edit?gid=0#gid=0"
+         target="_blank" rel="noopener">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-handshake"></i></span>
+        <span class="label">SARTI-MAR<br>Acknowledgements</span>
+      </a>
+
+      <a class="item" href="index.html" aria-label="Volver al panel principal">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+        <span class="label">Volver</span>
+      </a>
+    </nav>
+  </main>
+</body>
+</html>
