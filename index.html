@@ -5,11 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Panel OBSEA</title>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Base dinámico: solo se activa en GitHub Pages -->
+  <script>
+    (function () {
+      if (location.hostname.endsWith('github.io')) {
+        var base = document.createElement('base');
+        base.href = '/OBSEA-Base-Web-Panel/';
+        document.head.appendChild(base);
+      }
+    })();
+  </script>
 
-  <!-- Cache-busting -->
-  <link rel="stylesheet" href="styles.css?v=20251219-3" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css?v=20251219-6" />
 </head>
 
 <body>
@@ -17,61 +25,47 @@
     <nav class="grid" aria-label="Panel principal">
       <!-- Documentación -->
       <a class="item" href="docs.html" aria-label="Documentación y archivos">
-        <span class="circle" aria-hidden="true">
-          <i class="fa-solid fa-folder-open"></i>
-        </span>
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-folder-open"></i></span>
         <span class="label">Documentación</span>
       </a>
 
-      <!-- Promo / Presentaciones -->
-    <a class="item" href="promo.html" aria-label="Promo y presentaciones">
-      <span class="circle" aria-hidden="true">
-        <i class="fa-solid fa-photo-film"></i>
-      </span>
-      <span class="label">Promo</span>
-    </a>
+      <!-- Promo -->
+      <a class="item" href="promo.html" aria-label="Promo y presentaciones">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-photo-film"></i></span>
+        <span class="label">Promo</span>
+      </a>
 
       <!-- Monitorización -->
       <a class="item" href="monitoring.html" aria-label="Monitorización">
-        <span class="circle" aria-hidden="true">
-          <i class="fa-solid fa-chart-line"></i>
-        </span>
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></span>
         <span class="label">Monitorización</span>
       </a>
 
       <!-- Web OBSEA -->
       <a class="item" href="https://www.obsea.es/" target="_blank" rel="noopener"
          aria-label="Web OBSEA (se abre en una pestaña nueva)">
-        <span class="circle" aria-hidden="true">
-          <i class="fa-solid fa-globe"></i>
-        </span>
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-globe"></i></span>
         <span class="label">Web OBSEA</span>
       </a>
 
       <!-- Cámaras -->
       <a class="item" href="cameras.html" target="_blank" rel="noopener"
          aria-label="Cámaras (se abre en una pestaña nueva)">
-        <span class="circle" aria-hidden="true">
-          <i class="fa-solid fa-video"></i>
-        </span>
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-video"></i></span>
         <span class="label">Cámaras</span>
       </a>
 
-      <!-- Registro de inmersión (en desarrollo) -->
+      <!-- Registro de inmersión -->
       <button class="item item-btn" type="button" data-modal="dev"
               aria-label="Registro de inmersión (en desarrollo)">
-        <span class="circle" aria-hidden="true">
-          <i class="fa-solid fa-clipboard-list"></i>
-        </span>
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-clipboard-list"></i></span>
         <span class="label">Registro de inmersión</span>
       </button>
 
-      <!-- Control OBSEA (en desarrollo) -->
+      <!-- Control OBSEA -->
       <button class="item item-btn" type="button" data-modal="dev"
               aria-label="Control OBSEA (en desarrollo)">
-        <span class="circle" aria-hidden="true">
-          <i class="fa-solid fa-sliders"></i>
-        </span>
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-sliders"></i></span>
         <span class="label">Control OBSEA</span>
       </button>
     </nav>
@@ -95,7 +89,6 @@
       modal.setAttribute('aria-hidden', 'false');
       closeBtn.focus();
     }
-
     function closeModal(){
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');

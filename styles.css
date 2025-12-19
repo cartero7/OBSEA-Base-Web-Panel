@@ -52,7 +52,7 @@ body{
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Círculo minimal */
+/* Círculo */
 .circle{
   width: var(--size);
   height: var(--size);
@@ -101,7 +101,7 @@ body{
     inset 0 1px 0 rgba(255,255,255,.9);
 }
 
-/* Modal "En desarrollo" */
+/* Modal */
 .modal{
   position: fixed;
   inset: 0;
@@ -156,7 +156,7 @@ body{
   box-shadow: 0 0 0 5px var(--ring);
 }
 
-/* Para que los botones del panel se vean como links */
+/* Botones como links */
 .item-btn{
   appearance: none;
   border: none;
@@ -165,10 +165,10 @@ body{
   cursor: pointer;
   font: inherit;
   color: inherit;
-  display: grid; /* robustez */
+  display: grid;
 }
 
-/* Móvil: 2 columnas + ritmo más compacto y aire lateral */
+/* Móvil */
 @media (max-width: 420px){
   .wrap{ padding: 28px 24px; }
   .grid{
