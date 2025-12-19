@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Control OBSEA</title>
+
+  <!-- Base dinámico para GitHub Pages -->
+  <script>
+    (function () {
+      if (location.hostname.endsWith('github.io')) {
+        var base = document.createElement('base');
+        base.href = '/OBSEA-Base-Web-Panel/';
+        document.head.appendChild(base);
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css?v=20251219-7" />
+
+  <style>
+    .page{ min-height: 100svh; display: grid; place-items: center; padding: clamp(18px, 4vw, 54px); }
+    .top{ width: min(900px, 100%); text-align: center; margin-bottom: 20px; }
+    .title{ margin: 0; font-size: clamp(16px, 2.2vw, 22px); font-weight: 650; }
+    .sub{ margin: 6px 0 0; font-size: 13px; color: rgba(11,18,32,.55); }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="top">
+      <h1 class="title">Control OBSEA</h1>
+      <p class="sub">Accesos al panel de control</p>
+    </header>
+
+    <nav class="grid" aria-label="Control OBSEA">
+      <!-- Dummy -->
+      <a class="item" href="http://193.146.75.174:8180/" target="_blank" rel="noopener"
+         aria-label="Dummy (se abre en una pestaña nueva)">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-flask"></i></span>
+        <span class="label">Dummy</span>
+      </a>
+
+      <!-- OBSEA3 (en desarrollo) -->
+      <button class="item item-btn" type="button" data-modal="dev"
+              aria-label="OBSEA3 (en desarrollo)">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-satellite-dish"></i></span>
+        <span class="label">OBSEA3</span>
+      </button>
+
+      <!-- Volver -->
+      <a class="item" href="index.html" aria-label="Volver al panel principal">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+        <span class="label">Volver</span>
+      </a>
+    </nav>
+  </main>
+
+  <!-- Modal "En desarrollo" -->
+  <div class="modal" id="dev-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card" role="document">
+      <p class="modal-title">En desarrollo</p>
+      <p class="modal-text">Esta sección estará disponible próximamente.</p>
+      <button class="modal-btn" id="close-modal" type="button">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('dev-modal');
+    const closeBtn = document.getElementById('close-modal');
+
+    function openModal(){
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      closeBtn.focus();
+    }
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    document.querySelectorAll('[data-modal="dev"]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault?.();
+        openModal();
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+  </script>
+</body>
+</html>
