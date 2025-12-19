@@ -1,190 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Panel Principal</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel OBSEA</title>
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <style>
-    body {
-      background: var(--bg, #f4f4f4);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      margin: 0;
-      min-height: 100vh;
-    }
-    .obsea-logo-top {
-      width: 100%;
-      height: 90px;
-      background: url('assets/icons/obsea_logo_top.svg') no-repeat 18px center;
-      background-size: auto 70px;
-      margin-bottom: 2.5rem;
-    }
-    .obsea-bg-logo {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background: url('assets/icons/obsea_logo.svg') no-repeat center;
-      background-size: min(60vw, 60vh);
-      opacity: 0.10;
-      filter: blur(1.5px) saturate(0.85);
-    }
-    .main-content {
-      position: relative;
-      z-index: 1;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 80vh;
-      padding: 0 12px;
-    }
-    .panel {
-      width: 100%;
-      max-width: 900px;
-      background: #fff;
-      border-radius: 22px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.10);
-      padding: 48px 32px;
-      display: grid;
-      gap: 36px;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      justify-items: center;
-      align-items: start;
-      margin: 0 auto;
-    }
-    .icon-link {
-      width: 100%;
-      min-height: 170px;
-      border-radius: 18px;
-      border: 1.5px solid rgba(15, 23, 42, 0.06);
-      background: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      padding: 24px 10px 18px 10px;
-      text-decoration: none;
-      color: inherit;
-      box-shadow: 0 2px 12px rgba(2,6,23,.04);
-      transition: transform .12s, box-shadow .12s, border-color .12s;
-    }
-    .icon-link:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 16px 32px rgba(0,120,215,0.10);
-      border-color: rgba(0,120,215,.18);
-    }
-    .icon-circle {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      background: rgba(0,120,215,0.10);
-      color: var(--brand, #0078d7);
-      box-shadow: 0 2px 8px rgba(0,120,215,0.04);
-    }
-    .icon-link span {
-      font-size: 1.13rem;
-      font-weight: 600;
-      text-align: center;
-      line-height: 1.3;
-      margin-top: 0.5rem;
-    }
-    @media (max-width: 900px) {
-      .panel {
-        max-width: 98vw;
-        padding: 18px 2px;
-        gap: 18px;
-      }
-      .icon-circle {
-        width: 70px;
-        height: 70px;
-        font-size: 1.7rem;
-      }
-    }
-    @media (max-width: 600px) {
-      .panel {
-        grid-template-columns: 1fr;
-        padding: 8px 0;
-        gap: 10px;
-      }
-      .main-content {
-        padding: 18px 0;
-      }
-    }
-  </style>
+
+  <!-- Cache-busting -->
+  <link rel="stylesheet" href="styles.css?v=20251219-3" />
 </head>
+
 <body>
-  <div class="obsea-logo-top"></div>
-  <div class="obsea-bg-logo" aria-hidden="true"></div>
-  <main class="main-content">
-    <section class="panel" aria-label="Panel principal">
-      <a href="https://files.obsea.es/" class="icon-link" target="_blank" rel="noopener">
-        <div class="icon-circle" aria-hidden="true">
-          <i class="fas fa-folder-open"></i>
-        </div>
-        <span>Archivos OBSEA</span>
+  <main class="wrap">
+    <nav class="grid" aria-label="Panel principal">
+      <!-- Documentación -->
+      <a class="item" href="docs.html" aria-label="Documentación y archivos">
+        <span class="circle" aria-hidden="true">
+          <i class="fa-solid fa-folder-open"></i>
+        </span>
+        <span class="label">Documentación</span>
       </a>
-      <a href="https://www.obsea.es/" class="icon-link" target="_blank" rel="noopener">
-        <div class="icon-circle" aria-hidden="true">
-          <i class="fas fa-globe"></i>
-        </div>
-        <span>Web OBSEA</span>
+
+      <!-- Promo / Presentaciones -->
+    <a class="item" href="promo.html" aria-label="Promo y presentaciones">
+      <span class="circle" aria-hidden="true">
+        <i class="fa-solid fa-photo-film"></i>
+      </span>
+      <span class="label">Promo</span>
+    </a>
+
+      <!-- Monitorización -->
+      <a class="item" href="monitoring.html" aria-label="Monitorización">
+        <span class="circle" aria-hidden="true">
+          <i class="fa-solid fa-chart-line"></i>
+        </span>
+        <span class="label">Monitorización</span>
       </a>
-      <a href="cameras.html" class="icon-link" target="_blank" rel="noopener">
-        <div class="icon-circle" aria-hidden="true">
-          <i class="fas fa-video"></i>
-        </div>
-        <span>Cámaras</span>
+
+      <!-- Web OBSEA -->
+      <a class="item" href="https://www.obsea.es/" target="_blank" rel="noopener"
+         aria-label="Web OBSEA (se abre en una pestaña nueva)">
+        <span class="circle" aria-hidden="true">
+          <i class="fa-solid fa-globe"></i>
+        </span>
+        <span class="label">Web OBSEA</span>
       </a>
-      <button type="button" class="icon-link" id="registro-link">
-        <div class="icon-circle" aria-hidden="true">
-          <i class="fas fa-book"></i>
-        </div>
-        <span>Registro de inmersión</span>
+
+      <!-- Cámaras -->
+      <a class="item" href="cameras.html" target="_blank" rel="noopener"
+         aria-label="Cámaras (se abre en una pestaña nueva)">
+        <span class="circle" aria-hidden="true">
+          <i class="fa-solid fa-video"></i>
+        </span>
+        <span class="label">Cámaras</span>
+      </a>
+
+      <!-- Registro de inmersión (en desarrollo) -->
+      <button class="item item-btn" type="button" data-modal="dev"
+              aria-label="Registro de inmersión (en desarrollo)">
+        <span class="circle" aria-hidden="true">
+          <i class="fa-solid fa-clipboard-list"></i>
+        </span>
+        <span class="label">Registro de inmersión</span>
       </button>
-      <button type="button" class="icon-link" id="control-link">
-        <div class="icon-circle" aria-hidden="true">
-          <i class="fas fa-microchip"></i>
-        </div>
-        <span>Control OBSEA</span>
+
+      <!-- Control OBSEA (en desarrollo) -->
+      <button class="item item-btn" type="button" data-modal="dev"
+              aria-label="Control OBSEA (en desarrollo)">
+        <span class="circle" aria-hidden="true">
+          <i class="fa-solid fa-sliders"></i>
+        </span>
+        <span class="label">Control OBSEA</span>
       </button>
-    </section>
+    </nav>
   </main>
-  <div class="modal" id="modal-dev" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal__card" role="document">
-      <div class="modal__title">En desarrollo</div>
-      <button type="button" class="modal__btn" id="modal-close">Cerrar</button>
+
+  <!-- Modal -->
+  <div class="modal" id="dev-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card" role="document">
+      <p class="modal-title">En desarrollo</p>
+      <p class="modal-text">Esta sección estará disponible próximamente.</p>
+      <button class="modal-btn" id="close-modal" type="button">Cerrar</button>
     </div>
   </div>
+
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const modal = document.getElementById('modal-dev');
-      const closeBtn = document.getElementById('modal-close');
-      const openModal = () => {
-        modal.classList.add('is-open');
-        modal.setAttribute('aria-hidden', 'false');
-        closeBtn?.focus();
-      };
-      const closeModal = () => {
-        modal.classList.remove('is-open');
-        modal.setAttribute('aria-hidden', 'true');
-      };
-      document.getElementById('control-link')?.addEventListener('click', openModal);
-      document.getElementById('registro-link')?.addEventListener('click', openModal);
-      closeBtn?.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
+    const modal = document.getElementById('dev-modal');
+    const closeBtn = document.getElementById('close-modal');
+
+    function openModal(){
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      closeBtn.focus();
+    }
+
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    document.querySelectorAll('[data-modal="dev"]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault?.();
+        openModal();
       });
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
     });
   </script>
 </body>
