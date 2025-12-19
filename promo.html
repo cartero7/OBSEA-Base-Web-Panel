@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Promo</title>
+
+  <script>
+    (function () {
+      if (location.hostname.endsWith('github.io')) {
+        var base = document.createElement('base');
+        base.href = '/OBSEA-Base-Web-Panel/';
+        document.head.appendChild(base);
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css?v=20251219-6" />
+
+  <style>
+    .page{ min-height: 100svh; display: grid; place-items: center; padding: clamp(18px, 4vw, 54px); }
+    .top{ width: min(900px, 100%); text-align: center; margin-bottom: 20px; }
+    .title{ margin: 0; font-size: clamp(16px, 2.2vw, 22px); font-weight: 650; }
+    .sub{ margin: 6px 0 0; font-size: 13px; color: rgba(11,18,32,.55); }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="top">
+      <h1 class="title">Promo / TOP</h1>
+      <p class="sub">Material destacat per presentacions (links pendents)</p>
+    </header>
+
+    <nav class="grid" aria-label="Promo">
+      <button class="item item-btn" type="button" data-modal="pending" aria-label="DOFI (pendent d'enllaç)">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-fish-fins"></i></span>
+        <span class="label">DOFI</span>
+      </button>
+
+      <button class="item item-btn" type="button" data-modal="pending" aria-label="Campanyes (pendent d'enllaç)">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-clapperboard"></i></span>
+        <span class="label">Campanyes</span>
+      </button>
+
+      <button class="item item-btn" type="button" data-modal="pending" aria-label="Galeria (pendent d'enllaç)">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-images"></i></span>
+        <span class="label">Galeria</span>
+      </button>
+
+      <a class="item" href="index.html" aria-label="Volver al panel principal">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+        <span class="label">Volver</span>
+      </a>
+    </nav>
+  </main>
+
+  <!-- Modal simple (pendiente) -->
+  <div class="modal" id="pending-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card" role="document">
+      <p class="modal-title">Pendiente de enlaces</p>
+      <p class="modal-text">Aún no se han añadido las URLs de este apartado.</p>
+      <button class="modal-btn" id="close-modal" type="button">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('pending-modal');
+    const closeBtn = document.getElementById('close-modal');
+
+    function openModal(){
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      closeBtn.focus();
+    }
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    document.querySelectorAll('[data-modal="pending"]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault?.();
+        openModal();
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+  </script>
+</body>
+</html>
