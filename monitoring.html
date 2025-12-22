@@ -15,14 +15,32 @@
     })();
   </script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="styles.css?v=20251219-6" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css?v=20251222-1" />
 
   <style>
-    .page{ min-height: 100svh; display: grid; place-items: center; padding: clamp(18px, 4vw, 54px); }
-    .top{ width: min(900px, 100%); text-align: center; margin-bottom: 20px; }
-    .title{ margin: 0; font-size: clamp(16px, 2.2vw, 22px); font-weight: 650; }
-    .sub{ margin: 6px 0 0; font-size: 13px; color: rgba(11,18,32,.55); }
+    .page{
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: clamp(18px, 4vw, 54px);
+    }
+    .top{
+      width: min(900px, 100%);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .title{
+      margin: 0;
+      font-size: clamp(16px, 2.2vw, 22px);
+      font-weight: 650;
+    }
+    .sub{
+      margin: 6px 0 0;
+      font-size: 13px;
+      color: rgba(11,18,32,.55);
+    }
   </style>
 </head>
 
@@ -30,21 +48,51 @@
   <main class="page">
     <header class="top">
       <h1 class="title">Monitorización</h1>
-      <p class="sub">Dashboards del sistema</p>
+      <p class="sub">Dashboards y sistemas de supervisión</p>
     </header>
 
     <nav class="grid" aria-label="Monitorización">
+
+      <!-- Grafana Posidonia -->
       <a class="item"
          href="https://data.obsea.es/grafana/d/eekggtb4yu0hsd/posidonia-tank-monitor?orgId=1&from=now-3h&to=now"
          target="_blank" rel="noopener">
-        <span class="circle" aria-hidden="true"><i class="fa-solid fa-seedling"></i></span>
-        <span class="label">Posidonia</span>
+        <span class="circle"><i class="fa-solid fa-seedling"></i></span>
+        <span class="label">Grafana · Posidonia</span>
       </a>
 
-      <a class="item" href="index.html" aria-label="Volver al panel principal">
-        <span class="circle" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+      <!-- Grafana general -->
+      <a class="item"
+         href="https://data.obsea.es/grafana/?orgId=1"
+         target="_blank" rel="noopener">
+        <span class="circle"><i class="fa-solid fa-chart-line"></i></span>
+        <span class="label">Grafana · General</span>
+      </a>
+
+      <!-- Zabbix principal -->
+      <a class="item"
+         href="https://serverobsea.obsea.es:1108/zabbix/"
+         target="_blank" rel="noopener">
+        <span class="circle"><i class="fa-solid fa-server"></i></span>
+        <span class="label">Zabbix · Principal</span>
+      </a>
+
+      <!-- Zabbix futuro -->
+      <a class="item"
+         href="https://zabbix2obsea.obsea.es:8043/zabbix"
+         target="_blank" rel="noopener">
+        <span class="circle"><i class="fa-solid fa-rotate"></i></span>
+        <span class="label">Zabbix · Nuevo (futuro)</span>
+      </a>
+
+      <!-- Volver -->
+      <a class="item"
+         href="index.html"
+         aria-label="Volver al panel principal">
+        <span class="circle"><i class="fa-solid fa-arrow-left"></i></span>
         <span class="label">Volver</span>
       </a>
+
     </nav>
   </main>
 </body>

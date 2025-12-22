@@ -16,8 +16,12 @@
       --shadow: 0 10px 26px rgba(0,0,0,.08);
       --shadowHover: 0 18px 60px rgba(0,0,0,.12);
 
-      --cardW: 520px;                /* ancho ideal por tarjeta */
+      --cardW: 520px;
       --gap: clamp(12px, 2.2vw, 22px);
+
+      --chipBg: rgba(11,18,32,.06);
+      --chipBorder: rgba(11,18,32,.12);
+      --chipActive: rgba(11,18,32,.12);
     }
 
     *{ box-sizing: border-box; }
@@ -29,7 +33,6 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
 
-    /* Contenedor: ancho “real” del bloque (2 tarjetas + gap) */
     .page{
       width: min(calc(var(--cardW) * 2 + var(--gap)), 100%);
       margin: 0 auto;
@@ -38,7 +41,7 @@
 
     .header{
       text-align: center;
-      margin: 6px 0 18px;
+      margin: 6px 0 16px;
       display: grid;
       gap: 6px;
     }
@@ -47,7 +50,6 @@
       margin: 0;
       font-size: clamp(18px, 2.6vw, 26px);
       font-weight: 650;
-      letter-spacing: .2px;
     }
 
     .subtitle{
@@ -56,36 +58,105 @@
       color: var(--muted);
     }
 
-    /* Grid centrada (evita el “descentrado visual”) */
+    /* Filtros */
+    .filters{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 12px 0 18px;
+    }
+
+    .chip{
+      border: 1px solid var(--chipBorder);
+      background: var(--chipBg);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      user-select: none;
+      transition: background .12s ease, transform .12s ease;
+    }
+
+    .chip:hover{ transform: translateY(-1px); }
+
+    .chip[aria-pressed="true"]{
+      background: var(--chipActive);
+      font-weight: 600;
+    }
+
+    /* Acción */
+    .actions{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .action{
+      border: 1px solid rgba(11,18,32,.14);
+      background: #fff;
+      border-radius: 12px;
+      padding: 9px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+
+    .action:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(0,0,0,.08);
+    }
+
+    /* Grid */
     .grid{
       display: grid;
       gap: var(--gap);
       justify-content: center;
       align-items: start;
-
-      /* 2 columnas controladas en desktop */
       grid-template-columns: repeat(2, minmax(300px, var(--cardW)));
     }
 
     .cam{
-      width: 100%;
       background: var(--card);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 14px;
-
       display: grid;
       gap: 10px;
-
       transition: transform .14s ease, box-shadow .14s ease;
+    }
+
+    .cam:hover{
+      transform: translateY(-1px);
+      box-shadow: var(--shadowHover);
     }
 
     .cam-title{
       text-align: center;
       font-size: 14px;
       font-weight: 600;
-      letter-spacing: .2px;
       color: rgba(11,18,32,.78);
+    }
+
+    .cam-placeholder{
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      background: #0b1220;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-weight: 650;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0,0,0,.10);
+    }
+
+    .cam-placeholder small{
+      font-size: 12px;
+      font-weight: 500;
+      opacity: .75;
+      margin-top: 6px;
     }
 
     .cam-frame{
@@ -97,22 +168,12 @@
       box-shadow: 0 8px 18px rgba(0,0,0,.10);
     }
 
-    .cam:hover{
-      box-shadow: var(--shadowHover);
-      transform: translateY(-1px);
-    }
+    .hidden{ display: none !important; }
 
-    /* 1 columna en móvil */
     @media (max-width: 760px){
-      .page{
-        width: min(var(--cardW), 100%);
-      }
-      .grid{
-        grid-template-columns: 1fr;
-      }
-      .cam{
-        padding: 12px;
-      }
+      .page{ width: min(var(--cardW), 100%); }
+      .grid{ grid-template-columns: 1fr; }
+      .cam{ padding: 12px; }
     }
   </style>
 </head>
@@ -121,27 +182,124 @@
   <main class="page">
     <header class="header">
       <h1>Listado de Cámaras</h1>
-      <p class="subtitle">Acceso directo a emisiones en vivo</p>
+      <p class="subtitle">Las emisiones se cargan bajo demanda</p>
     </header>
 
-    <section class="grid">
-      <article class="cam"><div class="cam-title">OBSEA_UPC</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UCnRRrUdQN4vTpw9EnOp_YwA" allowfullscreen></iframe></article>
-      <article class="cam"><div class="cam-title">obsea_upc_live</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UCbwLiUXu_TfeUm_pW5Cl_Hw" allow="autoplay; encrypted-media" allowfullscreen></iframe></article>
-      <article class="cam"><div class="cam-title">obsea_cam1</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UCkdi7njl0MIpDW4uqvIbi6A" allow="autoplay; encrypted-media" allowfullscreen></iframe></article>
-      <article class="cam"><div class="cam-title">obsea_cam_3</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UCZpygJ1pPbsWxNVW2-tGDDg" allow="autoplay; encrypted-media" allowfullscreen></iframe></article>
-      <article class="cam"><div class="cam-title">marina_palamos</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UChzi9vuInmiRRHPCrtLCh6w" allow="autoplay; encrypted-media" allowfullscreen></iframe></article>
-      <article class="cam"><div class="cam-title">carpa_cam</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UCu1CWrDcxHlDO2vj4vmx3GQ" allow="autoplay; encrypted-media" allowfullscreen></iframe></article>
-      <article class="cam"><div class="cam-title">lab_cam</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UCsQyuqcwq-U4OlCJeaJ45ZQ" allow="autoplay; encrypted-media" allowfullscreen></iframe></article>
-      <article class="cam"><div class="cam-title">obsea_ai</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UCkSun8SUrNpiKYXZSicJiHA" allow="autoplay; encrypted-media" allowfullscreen></iframe></article>
-      <article class="cam"><div class="cam-title">obsea_cam7</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UCo2QsaapoQvggqPEjj5KXvQ" allow="autoplay; encrypted-media" allowfullscreen></iframe></article>
-      <article class="cam"><div class="cam-title">obsea_cam8</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UCmj6lVQNpoRrGQxhM3GkH4A" allow="autoplay; encrypted-media" allowfullscreen></iframe></article>
-      <article class="cam"><div class="cam-title">obsea_cam9</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UCk0Mu56B_zwvKpxyvpxp6ZA" allow="autoplay; encrypted-media" allowfullscreen></iframe></article>
+    <!-- Filtros -->
+    <div class="filters" role="toolbar" aria-label="Filtros">
+      <button class="chip" data-filter="all" aria-pressed="true">Todas</button>
+      <button class="chip" data-filter="obsea">OBSEA</button>
+      <button class="chip" data-filter="po">Port Olímpic</button>
+      <button class="chip" data-filter="palamos">Palamós</button>
+      <button class="chip" data-filter="internal">Internas</button>
+      <button class="chip" data-filter="other">Otras</button>
+    </div>
 
-      <article class="cam"><div class="cam-title">po_1</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UCQFXozj5Tz0Ys3Q0GYPe4Pw" allow="autoplay; encrypted-media" allowfullscreen></iframe></article>
-      <article class="cam"><div class="cam-title">po_2</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UCba0QK4DxLr8M_HojIO1Ydw" allow="autoplay; encrypted-media" allowfullscreen></iframe></article>
-      <article class="cam"><div class="cam-title">po_3</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UCI5HWibnupZ4_kH4fncBl4g" allow="autoplay; encrypted-media" allowfullscreen></iframe></article>
-      <article class="cam"><div class="cam-title">po_4</div><iframe class="cam-frame" src="https://www.youtube.com/embed/live_stream?channel=UC27XzGMM2uDUg1feSRvn38Q" allow="autoplay; encrypted-media" allowfullscreen></iframe></article>
+    <!-- Acción -->
+    <div class="actions">
+      <button class="action" id="load-visible" type="button">
+        Cargar visibles (máx. 4)
+      </button>
+    </div>
+
+    <section class="grid">
+      <!-- OBSEA -->
+      <article class="cam" data-group="obsea" data-title="OBSEA_UPC"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UCnRRrUdQN4vTpw9EnOp_YwA"></article>
+      <article class="cam" data-group="obsea" data-title="obsea_upc_live"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UCbwLiUXu_TfeUm_pW5Cl_Hw"></article>
+      <article class="cam" data-group="obsea" data-title="obsea_cam1"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UCkdi7njl0MIpDW4uqvIbi6A"></article>
+      <article class="cam" data-group="obsea" data-title="obsea_cam_3"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UCZpygJ1pPbsWxNVW2-tGDDg"></article>
+
+      <!-- Port Olímpic -->
+      <article class="cam" data-group="po" data-title="po_1"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UCQFXozj5Tz0Ys3Q0GYPe4Pw"></article>
+      <article class="cam" data-group="po" data-title="po_2"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UCba0QK4DxLr8M_HojIO1Ydw"></article>
+      <article class="cam" data-group="po" data-title="po_3"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UCI5HWibnupZ4_kH4fncBl4g"></article>
+      <article class="cam" data-group="po" data-title="po_4"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UC27XzGMM2uDUg1feSRvn38Q"></article>
+
+      <!-- Palamós -->
+      <article class="cam" data-group="palamos" data-title="marina_palamos"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UChzi9vuInmiRRHPCrtLCh6w"></article>
+
+      <!-- Internas -->
+      <article class="cam" data-group="internal" data-title="carpa_cam"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UCu1CWrDcxHlDO2vj4vmx3GQ"></article>
+      <article class="cam" data-group="internal" data-title="lab_cam"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UCsQyuqcwq-U4OlCJeaJ45ZQ"></article>
+
+      <!-- Otras -->
+      <article class="cam" data-group="other" data-title="obsea_ai"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UCkSun8SUrNpiKYXZSicJiHA"></article>
+      <article class="cam" data-group="other" data-title="obsea_cam7"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UCo2QsaapoQvggqPEjj5KXvQ"></article>
+      <article class="cam" data-group="other" data-title="obsea_cam8"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UCmj6lVQNpoRrGQxhM3GkH4A"></article>
+      <article class="cam" data-group="other" data-title="obsea_cam9"
+        data-src="https://www.youtube.com/embed/live_stream?channel=UCk0Mu56B_zwvKpxyvpxp6ZA"></article>
     </section>
   </main>
+
+  <script>
+    function renderCard(card){
+      const title = card.dataset.title;
+      const src = card.dataset.src;
+
+      card.innerHTML = `
+        <div class="cam-title">${title}</div>
+        <button class="cam-placeholder" type="button" data-src="${src}">
+          Ver
+          <small>Cargar emisión</small>
+        </button>
+      `;
+
+      card.querySelector('.cam-placeholder')
+          .addEventListener('click', e => loadIframe(e.target));
+    }
+
+    function loadIframe(btn){
+      const iframe = document.createElement('iframe');
+      iframe.className = 'cam-frame';
+      iframe.src = btn.dataset.src;
+      iframe.allow = 'autoplay; encrypted-media';
+      iframe.allowFullscreen = true;
+      btn.replaceWith(iframe);
+    }
+
+    function setFilter(filter){
+      document.querySelectorAll('.chip').forEach(b =>
+        b.setAttribute('aria-pressed', b.dataset.filter === filter)
+      );
+
+      document.querySelectorAll('.cam').forEach(card => {
+        const show = filter === 'all' || card.dataset.group === filter;
+        card.classList.toggle('hidden', !show);
+      });
+    }
+
+    function loadVisible(max = 4){
+      let count = 0;
+      document.querySelectorAll('.cam:not(.hidden)').forEach(card => {
+        if (count >= max) return;
+        const btn = card.querySelector('.cam-placeholder');
+        if (btn){
+          loadIframe(btn);
+          count++;
+        }
+      });
+    }
+
+    document.querySelectorAll('.cam').forEach(renderCard);
+    document.querySelectorAll('.chip').forEach(btn =>
+      btn.addEventListener('click', () => setFilter(btn.dataset.filter))
+    );
+    document.getElementById('load-visible')
+            .addEventListener('click', () => loadVisible(4));
+  </script>
 </body>
 </html>

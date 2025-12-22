@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Webs</title>
+
+  <!-- Base dinámico para GitHub Pages -->
+  <script>
+    (function () {
+      if (location.hostname.endsWith('github.io')) {
+        var base = document.createElement('base');
+        base.href = '/OBSEA-Base-Web-Panel/';
+        document.head.appendChild(base);
+      }
+    })();
+  </script>
+
+  <!-- Font Awesome 6.5+ -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css?v=20251219-11" />
+
+  <style>
+    .page{
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: clamp(18px, 4vw, 54px);
+    }
+
+    .top{
+      width: min(900px, 100%);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .title{
+      margin: 0;
+      font-size: clamp(16px, 2.2vw, 22px);
+      font-weight: 650;
+    }
+
+    .sub{
+      margin: 6px 0 0;
+      font-size: 13px;
+      color: rgba(11,18,32,.55);
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="top">
+      <h1 class="title">Webs</h1>
+      <p class="sub">Proyectos y plataformas OBSEA</p>
+    </header>
+
+    <nav class="grid" aria-label="Webs OBSEA">
+      <a class="item" href="https://posidonia.obsea.es/" target="_blank" rel="noopener">
+        <span class="circle"><i class="fa-solid fa-seedling"></i></span>
+        <span class="label">Posidonia</span>
+      </a>
+
+      <a class="item" href="https://slagreef.obsea.es/" target="_blank" rel="noopener">
+        <span class="circle"><i class="fa-solid fa-mountain"></i></span>
+        <span class="label">Slagreef</span>
+      </a>
+
+      <a class="item" href="https://intmarsis.obsea.es/" target="_blank" rel="noopener">
+        <span class="circle"><i class="fa-solid fa-wave-square"></i></span>
+        <span class="label">INTMARSIS</span>
+      </a>
+
+      <a class="item" href="https://onasafeandclean.obsea.es/" target="_blank" rel="noopener">
+        <span class="circle"><i class="fa-solid fa-gauge-high"></i></span>
+        <span class="label">OnaSafe&Clean</span>
+      </a>
+
+      <a class="item" href="https://myboat.obsea.es/" target="_blank" rel="noopener">
+        <span class="circle"><i class="fa-solid fa-sailboat"></i></span>
+        <span class="label">MyBoat</span>
+      </a>
+
+      <a class="item" href="https://dtts.obsea.es/" target="_blank" rel="noopener">
+        <span class="circle"><i class="fa-solid fa-route"></i></span>
+        <span class="label">DTTS</span>
+      </a>
+
+      <a class="item" href="index.html">
+        <span class="circle"><i class="fa-solid fa-arrow-left"></i></span>
+        <span class="label">Volver</span>
+      </a>
+    </nav>
+  </main>
+</body>
+</html>

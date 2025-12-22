@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Promo</title>
+  <title>Campañas</title>
 
   <!-- Base dinámico para GitHub Pages -->
   <script>
@@ -16,47 +16,71 @@
     })();
   </script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="styles.css?v=20251219-8" />
+  <!-- Font Awesome (NECESARIO 6.5+) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Estilos comunes -->
+  <link rel="stylesheet" href="styles.css?v=20251219-10" />
 
   <style>
-    .page{ min-height: 100svh; display: grid; place-items: center; padding: clamp(18px, 4vw, 54px); }
-    .top{ width: min(900px, 100%); text-align: center; margin-bottom: 20px; }
-    .title{ margin: 0; font-size: clamp(16px, 2.2vw, 22px); font-weight: 650; }
-    .sub{ margin: 6px 0 0; font-size: 13px; color: rgba(11,18,32,.55); }
+    .page{
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: clamp(18px, 4vw, 54px);
+    }
+
+    .top{
+      width: min(900px, 100%);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .title{
+      margin: 0;
+      font-size: clamp(16px, 2.2vw, 22px);
+      font-weight: 650;
+    }
+
+    .sub{
+      margin: 6px 0 0;
+      font-size: 13px;
+      color: rgba(11,18,32,.55);
+    }
   </style>
 </head>
 
 <body>
   <main class="page">
     <header class="top">
-      <h1 class="title">Promo</h1>
-      <p class="sub">Material destacado para presentaciones (vídeos, fotos y enlaces)</p>
+      <h1 class="title">Campañas</h1>
+      <p class="sub">Accesos por tipo de material</p>
     </header>
 
-    <nav class="grid" aria-label="Promo">
-
-      <!-- Campañas (nueva página) -->
-      <a class="item" href="campaigns.html" aria-label="Campañas">
-        <span class="circle" aria-hidden="true"><i class="fa-solid fa-clapperboard"></i></span>
-        <span class="label">Campañas</span>
+    <nav class="grid" aria-label="Campañas">
+      <!-- Landers -->
+      <a class="item" href="landers.html" aria-label="Landers">
+        <span class="circle" aria-hidden="true">
+          <i class="fa-solid fa-anchor"></i>
+        </span>
+        <span class="label">Landers</span>
       </a>
 
-      <!-- DOFI (placeholder) -->
-      <button class="item item-btn" type="button" data-modal="dev" aria-label="DOFI (en desarrollo)">
-        <span class="circle" aria-hidden="true"><i class="fa-solid fa-fish-fins"></i></span>
-        <span class="label">DOFI</span>
-      </button>
-
-      <!-- Galería (placeholder) -->
-      <button class="item item-btn" type="button" data-modal="dev" aria-label="Galería (en desarrollo)">
-        <span class="circle" aria-hidden="true"><i class="fa-solid fa-images"></i></span>
-        <span class="label">Galería</span>
+      <!-- PopUpBuoys (en desarrollo) -->
+      <button class="item item-btn" type="button" data-modal="dev"
+              aria-label="PopUpBuoys (en desarrollo)">
+        <span class="circle" aria-hidden="true">
+          <i class="fa-solid fa-arrow-up-from-ground-water"></i>
+        </span>
+        <span class="label">PopUpBuoys</span>
       </button>
 
       <!-- Volver -->
-      <a class="item" href="index.html" aria-label="Volver al panel principal">
-        <span class="circle" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+      <a class="item" href="promo.html" aria-label="Volver a Promo">
+        <span class="circle" aria-hidden="true">
+          <i class="fa-solid fa-arrow-left"></i>
+        </span>
         <span class="label">Volver</span>
       </a>
     </nav>
@@ -80,6 +104,7 @@
       modal.setAttribute('aria-hidden', 'false');
       closeBtn.focus();
     }
+
     function closeModal(){
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
@@ -93,7 +118,11 @@
     });
 
     closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
     });
