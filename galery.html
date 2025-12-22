@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Landers</title>
+  <title>Gallery</title>
 
   <!-- Base dinámico para GitHub Pages -->
   <script>
@@ -16,9 +16,12 @@
     })();
   </script>
 
+  <!-- Font Awesome (NECESARIO 6.5+) -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="styles.css?v=20251219-9" />
+
+  <!-- Estilos comunes -->
+  <link rel="stylesheet" href="styles.css?v=20251222-01" />
 
   <style>
     .page{
@@ -46,7 +49,7 @@
       color: rgba(11,18,32,.55);
     }
 
-    /* Flechita enlaces externos */
+    /* (opcional) estilo mínimo para links externos si tu styles.css no lo diferencia */
     .item-external .label::after{
       content: "↗";
       margin-left: 8px;
@@ -59,40 +62,42 @@
 <body>
   <main class="page">
     <header class="top">
-      <h1 class="title">Landers</h1>
-      <p class="sub">Playlists (YouTube)</p>
+      <h1 class="title">Gallery</h1>
+      <p class="sub">Playlists de YouTube</p>
     </header>
 
-    <nav class="grid" aria-label="Landers playlists">
-
+    <nav class="grid" aria-label="Gallery">
+      <!-- Presentaciones generales -->
       <a class="item item-external"
-         href="https://youtube.com/playlist?list=PLXOmwHlVfI1GsvNniuyDcJfPYRb1LZFD-&si=XNISobToTyEbFOdJ"
-         target="_blank" rel="noopener"
-         aria-label="Deep-Sea (YouTube)">
+         href="https://www.youtube.com/playlist?list=PL5BxZMIYBCQqEQsjH2utqbd3DyPUEPNt9"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Presentaciones generales (YouTube)">
         <span class="circle" aria-hidden="true">
-          <i class="fa-brands fa-youtube"></i>
+          <i class="fa-solid fa-chalkboard-user"></i>
         </span>
-        <span class="label">Deep-Sea</span>
+        <span class="label">Presentaciones generales</span>
       </a>
 
+      <!-- Crawler Rossia -->
       <a class="item item-external"
-         href="https://youtube.com/playlist?list=PLXOmwHlVfI1E6upvMhjien1wfonwDsdKH&si=oFqe1cwhhoXzcxBG"
-         target="_blank" rel="noopener"
-         aria-label="Digital Twin (YouTube)">
+         href="https://www.youtube.com/playlist?list=PL5BxZMIYBCQpS6q3MUpbkR_orOPAdDEpr"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Crawler Rossia (YouTube)">
         <span class="circle" aria-hidden="true">
-          <i class="fa-solid fa-cube"></i>
+          <i class="fa-solid fa-robot"></i>
         </span>
-        <span class="label">Digital Twin</span>
+        <span class="label">Crawler Rossia</span>
       </a>
 
+      <!-- Delfín -->
       <a class="item item-external"
-         href="https://youtube.com/playlist?list=PLXOmwHlVfI1G0St92xf88ojbsZIdcphJT&si=3LkxO84pRbbLVmvi"
-         target="_blank" rel="noopener"
-         aria-label="Deploy (YouTube)">
+         href="https://www.youtube.com/playlist?list=PL5BxZMIYBCQqlSln2DM4glb02mEvPRGcS"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Delfín (YouTube)">
         <span class="circle" aria-hidden="true">
-          <i class="fa-solid fa-ship"></i>
+          <i class="fa-solid fa-fish-fins"></i>
         </span>
-        <span class="label">Deploy</span>
+        <span class="label">Delfín</span>
       </a>
 
       <!-- Volver -->
@@ -104,7 +109,6 @@
         </span>
         <span class="label">Volver</span>
       </a>
-
     </nav>
   </main>
 </body>

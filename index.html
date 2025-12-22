@@ -20,60 +20,63 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="styles.css?v=20251219-7" />
+  <link rel="stylesheet" href="styles.css?v=20251222" />
 </head>
 
-<body>
+<body class="home">
+
   <main class="wrap">
     <nav class="grid" aria-label="Panel principal">
-      <!-- Documentación -->
+
       <a class="item" href="docs.html" aria-label="Documentación y archivos">
         <span class="circle" aria-hidden="true"><i class="fa-solid fa-folder-open"></i></span>
         <span class="label">Documentación</span>
       </a>
 
-      <!-- Monitorización -->
       <a class="item" href="monitoring.html" aria-label="Monitorización">
         <span class="circle" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></span>
         <span class="label">Monitorización</span>
       </a>
 
-
-      <!-- Promo -->
-      <a class="item" href="promo.html" aria-label="Promo y presentaciones">
-        <span class="circle" aria-hidden="true"><i class="fa-solid fa-photo-film"></i></span>
-        <span class="label">Promo</span>
-      </a>
-
-      <!-- Webs -->
-      <a class="item" href="webs.html" aria-label="Webs y redes">
-        <span class="circle" aria-hidden="true"><i class="fa-solid fa-globe"></i></span>
-        <span class="label">Webs</span>
-      </a>
-
-      <!-- Cámaras -->
       <a class="item" href="cameras.html" target="_blank" rel="noopener"
          aria-label="Cámaras (se abre en una pestaña nueva)">
         <span class="circle" aria-hidden="true"><i class="fa-solid fa-video"></i></span>
         <span class="label">Cámaras</span>
       </a>
 
-      <!-- Registro de inmersión (en desarrollo) -->
+      <a class="item" href="dto.html" aria-label="Digital Twin Observatory">
+      <span class="circle" aria-hidden="true">
+        <i class="fa-solid fa-cube"></i>
+      </span>
+      <span class="label">DTO</span>
+    </a>
+
       <button class="item item-btn" type="button" data-modal="dev"
               aria-label="Registro de inmersión (en desarrollo)">
         <span class="circle" aria-hidden="true"><i class="fa-solid fa-clipboard-list"></i></span>
         <span class="label">Registro de inmersión</span>
       </button>
 
-      <!-- Control OBSEA -->
       <a class="item" href="control.html" aria-label="Control OBSEA">
         <span class="circle" aria-hidden="true"><i class="fa-solid fa-sliders"></i></span>
         <span class="label">Control OBSEA</span>
       </a>
+
+        <a class="item" href="webs.html" aria-label="Webs y redes">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-globe"></i></span>
+        <span class="label">Webs</span>
+      </a>
+
+      <a class="item" href="promo.html" aria-label="Promo y presentaciones">
+        <span class="circle" aria-hidden="true"><i class="fa-solid fa-photo-film"></i></span>
+        <span class="label">Promo</span>
+      </a>
+
+
     </nav>
   </main>
 
-  <!-- Modal (usado por Registro de inmersión y placeholders futuros) -->
+  <!-- Modal -->
   <div class="modal" id="dev-modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-card" role="document">
       <p class="modal-title">En desarrollo</p>
@@ -97,15 +100,15 @@
     }
 
     document.querySelectorAll('[data-modal="dev"]').forEach(el => {
-      el.addEventListener('click', (e) => {
-        e.preventDefault?.();
+      el.addEventListener('click', e => {
+        e.preventDefault();
         openModal();
       });
     });
 
     closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', (e) => {
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
     });
   </script>
