@@ -26,8 +26,9 @@ body{
 /* ===== SOLO INDEX (toque de color sutil) ===== */
 body.home{
   background:
-    radial-gradient(900px 600px at 80% 80%, rgba(30,111,120,.10), transparent 60%),
-    radial-gradient(700px 500px at 20% 20%, rgba(11,18,32,.06), transparent 65%),
+    linear-gradient(180deg, #dfeeee 0%, #fafafa 100%),
+    radial-gradient(800px 500px at 75% 80%, rgba(25,95,90,.12), transparent 60%), 
+    
     var(--bg);
 }
 
@@ -88,6 +89,20 @@ body.home{
   text-align: center;
   line-height: 1.2;
 }
+/* Ajuste fino: alinear ópticamente el texto (evita que parezca "caído") */
+.item .label{
+  position: relative;
+  top: -1px;
+}
+
+/* Flechita para enlaces externos (si usas class="item item-external") */
+.item-external .label::after{
+  content: "↗";
+  margin-left: 8px;
+  font-size: .95em;
+  opacity: .6;
+}
+
 
 .item:hover .circle{
   transform: translateY(-3px);
@@ -201,12 +216,5 @@ body.home{
   background: rgba(11,18,32,.06);
 }
 
-
-/* NIVEL 1: Home (index) */
-body.home{
-  background:
-    linear-gradient(180deg, #dfeeee 0%, #fafafa 100%),
-    radial-gradient(800px 500px at 75% 80%, rgba(25,95,90,.12), transparent 60%);
-}
 
 
