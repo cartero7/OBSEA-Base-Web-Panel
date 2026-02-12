@@ -75,14 +75,13 @@
         <span class="label">Landers</span>
       </a>
 
-      <!-- PopUpBuoys (en desarrollo) -->
-      <button class="item item-btn" type="button" data-modal="dev"
-              aria-label="PopUpBuoys (en desarrollo)">
+      <!-- PopUpBuoys -->
+      <a class="item" href="popupbuoys.html" aria-label="PopUpBuoys">
         <span class="circle" aria-hidden="true">
           <i class="fa-solid fa-arrow-up-from-ground-water"></i>
         </span>
         <span class="label">PopUpBuoys</span>
-      </button>
+      </a>
 
       <!-- Volver -->
       <a class="item item-back"
@@ -96,46 +95,5 @@
     </nav>
   </main>
 
-  <!-- Modal "En desarrollo" -->
-  <div class="modal" id="dev-modal" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal-card" role="document">
-      <p class="modal-title">En desarrollo</p>
-      <p class="modal-text">Esta sección estará disponible próximamente.</p>
-      <button class="modal-btn" id="close-modal" type="button">Cerrar</button>
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById('dev-modal');
-    const closeBtn = document.getElementById('close-modal');
-
-    function openModal(){
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-      closeBtn.focus();
-    }
-
-    function closeModal(){
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-    }
-
-    document.querySelectorAll('[data-modal="dev"]').forEach(el => {
-      el.addEventListener('click', (e) => {
-        e.preventDefault?.();
-        openModal();
-      });
-    });
-
-    closeBtn.addEventListener('click', closeModal);
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
-    });
-  </script>
 </body>
 </html>

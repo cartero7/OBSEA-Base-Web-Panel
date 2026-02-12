@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PopUpBuoys</title>
+
+  <script>
+    (function () {
+      if (location.hostname.endsWith('github.io')) {
+        var base = document.createElement('base');
+        base.href = '/OBSEA-Base-Web-Panel/';
+        document.head.appendChild(base);
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css?v=20260212-1" />
+
+  <style>
+    .page { min-height: 100svh; display: grid; place-items: center; padding: clamp(18px, 4vw, 54px); }
+    .stack { width: min(980px, 100%); display: grid; gap: 18px; }
+    .top { text-align: center; }
+    .title { margin: 0; font-size: clamp(16px, 2.2vw, 22px); font-weight: 650; }
+    .sub { margin: 6px 0 0; font-size: 13px; color: rgba(11,18,32,.55); }
+    .panel {
+      background: #fff;
+      border: 1px solid rgba(11,18,32,.1);
+      border-radius: 16px;
+      padding: clamp(14px, 2.4vw, 22px);
+      box-shadow: 0 16px 35px rgba(0,0,0,.08);
+      display: grid;
+      gap: 10px;
+    }
+    .panel h2 { margin: 0; font-size: 16px; }
+    .links {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 7px;
+      font-size: 14px;
+    }
+    .links a {
+      color: #0b1220;
+      text-underline-offset: 2px;
+      overflow-wrap: anywhere;
+    }
+    .note {
+      margin: 0;
+      font-size: 13px;
+      color: rgba(11,18,32,.65);
+      line-height: 1.35;
+    }
+    .actions { display: flex; justify-content: center; margin-top: 6px; }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="stack" aria-label="PopUpBuoys material">
+      <header class="top">
+        <h1 class="title">PopUpBuoys</h1>
+        <p class="sub">Material para difusión, demos y contexto técnico</p>
+      </header>
+
+      <section class="panel">
+        <h2>Álbumes / fotos</h2>
+        <ul class="links">
+          <li><a href="https://photos.app.goo.gl/55nQCvGpH5pkgmc78" target="_blank" rel="noopener">Álbum de fotos</a></li>
+          <li><a href="https://photos.app.goo.gl/1mRx1U2L5dHQYSaY8" target="_blank" rel="noopener">Campaña PLOME</a></li>
+          <li><a href="https://photos.app.goo.gl/nsTKLdb1VZ7fMiT79" target="_blank" rel="noopener">Despliegue en OBSEA</a></li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Noticias</h2>
+        <ul class="links">
+          <li><a href="https://canalblau.tv/2024/11/20/un-projecte-del-sarti-millora-ladquisicio-i-transmissio-de-dades-dels-observatoris-submarins/" target="_blank" rel="noopener">Canal Blau - mejora en adquisición y transmisión de datos</a></li>
+          <li><a href="https://www.eixdiari.cat/societat/doc/113617/beca-leonardo-per-a-linvestigador-matias-carandell-per-innovar-en-el-monitoratge-dels-ecosistemes-ma.html" target="_blank" rel="noopener">Eix Diari - Beca Leonardo (Matias Carandell)</a></li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Código</h2>
+        <ul class="links">
+          <li><a href="https://github.com/obsea-upc/popup-buoy" target="_blank" rel="noopener">github.com/obsea-upc/popup-buoy</a></li>
+          <li><a href="https://github.com/obsea-upc/popup-server" target="_blank" rel="noopener">github.com/obsea-upc/popup-server</a></li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Material pendiente (lab/electrónica)</h2>
+        <p class="note">Crear álbum compartido de Google Photos con 20-30 fotos de diseño 3D y electrónica (menos campaña y más laboratorio).</p>
+      </section>
+
+      <div class="actions">
+        <a class="item item-back" href="promo.html" aria-label="Volver a promo">
+          <span class="circle" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+          <span class="label">Volver</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

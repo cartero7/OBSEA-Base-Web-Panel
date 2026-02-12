@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Control PopUpBuoys</title>
+
+  <script>
+    (function () {
+      if (location.hostname.endsWith('github.io')) {
+        var base = document.createElement('base');
+        base.href = '/OBSEA-Base-Web-Panel/';
+        document.head.appendChild(base);
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css?v=20260212-2" />
+
+  <style>
+    .page { min-height: 100svh; display: grid; place-items: center; padding: clamp(18px, 4vw, 54px); }
+    .stack { width: min(980px, 100%); display: grid; gap: 18px; }
+    .top { text-align: center; }
+    .title { margin: 0; font-size: clamp(16px, 2.2vw, 22px); font-weight: 650; }
+    .sub { margin: 6px 0 0; font-size: 13px; color: rgba(11,18,32,.55); }
+    .panel {
+      background: #fff;
+      border: 1px solid rgba(11,18,32,.1);
+      border-radius: 16px;
+      padding: clamp(14px, 2.4vw, 22px);
+      box-shadow: 0 16px 35px rgba(0,0,0,.08);
+      display: grid;
+      gap: 14px;
+    }
+    .panel h2 { margin: 0; font-size: 16px; }
+    .hint { margin: 0; font-size: 13px; color: rgba(11,18,32,.62); }
+    .rows { display: grid; gap: 10px; }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 8px;
+      align-items: center;
+    }
+    .row.generic { grid-template-columns: 1fr auto; }
+    .label-small { font-size: 13px; color: rgba(11,18,32,.82); }
+    select, button.cmd {
+      border-radius: 10px;
+      border: 1px solid rgba(11,18,32,.2);
+      padding: 9px 10px;
+      font-size: 13px;
+      background: #fff;
+      color: #0b1220;
+    }
+    button.cmd {
+      cursor: pointer;
+      min-width: 108px;
+      font-weight: 600;
+    }
+    button.cmd:hover { background: rgba(11,18,32,.05); }
+    .url {
+      margin: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      background: rgba(11,18,32,.04);
+      border-radius: 8px;
+      padding: 8px 10px;
+      color: rgba(11,18,32,.8);
+      overflow-wrap: anywhere;
+    }
+    .status {
+      margin: 0;
+      font-size: 12px;
+      color: rgba(11,18,32,.62);
+      min-height: 16px;
+    }
+    .actions { display: flex; justify-content: center; margin-top: 4px; }
+    @media (max-width: 650px) {
+      .row { grid-template-columns: 1fr; }
+      button.cmd { width: 100%; }
+      select { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="stack" aria-label="Control PopUpBuoys">
+      <header class="top">
+        <h1 class="title">Control PopUpBuoys</h1>
+        <p class="sub">Comandos HTTP para Pop-Up Buoy server (AP 192.168.5.1)</p>
+      </header>
+
+      <section class="panel">
+        <h2>Estado</h2>
+        <p class="status" id="status">Listo para enviar comandos.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Comandos por ID</h2>
+        <p class="hint">Selecciona la ID del equipo y lanza la peticion. Si no hay respuesta por CORS, se abrira el endpoint en una nueva pestana.</p>
+
+        <div class="rows">
+          <div class="row">
+            <span class="label-small">Permission</span>
+            <select id="permission-id" aria-label="ID para permission"></select>
+            <button class="cmd" type="button" data-command="permission">Enviar</button>
+          </div>
+          <p class="url" id="permission-url">http://192.168.5.1:5000/permission/1</p>
+
+          <div class="row">
+            <span class="label-small">Release</span>
+            <select id="release-id" aria-label="ID para release"></select>
+            <button class="cmd" type="button" data-command="release">Enviar</button>
+          </div>
+          <p class="url" id="release-url">http://192.168.5.1:5000/release/1</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Comandos generales</h2>
+        <div class="rows">
+          <div class="row generic">
+            <span class="label-small">Get sync time</span>
+            <button class="cmd" type="button" data-url="http://192.168.5.1:5000/getsynctime">Enviar</button>
+          </div>
+          <div class="row generic">
+            <span class="label-small">Get time</span>
+            <button class="cmd" type="button" data-url="http://192.168.5.1:5000/gettime">Enviar</button>
+          </div>
+          <div class="row generic">
+            <span class="label-small">Shutdown</span>
+            <button class="cmd" type="button" data-url="http://192.168.5.1:5000/control/shutdown">Enviar</button>
+          </div>
+          <div class="row generic">
+            <span class="label-small">Reboot</span>
+            <button class="cmd" type="button" data-url="http://192.168.5.1:5000/control/reboot">Enviar</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="actions">
+        <a class="item item-back" href="control.html" aria-label="Volver a control">
+          <span class="circle" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+          <span class="label">Volver</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    var baseUrl = "http://192.168.5.1:5000";
+    var statusEl = document.getElementById("status");
+    var permissionSelect = document.getElementById("permission-id");
+    var releaseSelect = document.getElementById("release-id");
+    var permissionUrl = document.getElementById("permission-url");
+    var releaseUrl = document.getElementById("release-url");
+
+    function fillIds(select) {
+      for (var id = 1; id <= 12; id += 1) {
+        var option = document.createElement("option");
+        option.value = String(id);
+        option.textContent = String(id);
+        select.appendChild(option);
+      }
+    }
+
+    function currentPermissionUrl() {
+      return baseUrl + "/permission/" + permissionSelect.value;
+    }
+
+    function currentReleaseUrl() {
+      return baseUrl + "/release/" + releaseSelect.value;
+    }
+
+    function updateDynamicUrls() {
+      permissionUrl.textContent = currentPermissionUrl();
+      releaseUrl.textContent = currentReleaseUrl();
+    }
+
+    function setStatus(text) {
+      statusEl.textContent = text;
+    }
+
+    async function sendCommand(url) {
+      var timeoutMs = 6000;
+      var controller = new AbortController();
+      var timerId = setTimeout(function () {
+        controller.abort();
+      }, timeoutMs);
+
+      setStatus("Enviando: " + url);
+      try {
+        await fetch(url, { method: "GET", mode: "cors", signal: controller.signal });
+        setStatus("OK: " + url);
+      } catch (error) {
+        if (error && error.name === "AbortError") {
+          setStatus("Sin respuesta (" + timeoutMs + " ms): " + url);
+        } else {
+          setStatus("Error de red o CORS: " + url);
+        }
+      } finally {
+        clearTimeout(timerId);
+      }
+    }
+
+    fillIds(permissionSelect);
+    fillIds(releaseSelect);
+    updateDynamicUrls();
+
+    permissionSelect.addEventListener("change", updateDynamicUrls);
+    releaseSelect.addEventListener("change", updateDynamicUrls);
+
+    document.querySelectorAll("[data-command='permission']").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        sendCommand(currentPermissionUrl());
+      });
+    });
+
+    document.querySelectorAll("[data-command='release']").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        sendCommand(currentReleaseUrl());
+      });
+    });
+
+    document.querySelectorAll("[data-url]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        sendCommand(btn.getAttribute("data-url"));
+      });
+    });
+  </script>
+</body>
+</html>
