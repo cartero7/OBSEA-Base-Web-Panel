@@ -74,6 +74,14 @@
       color: rgba(11,18,32,.62);
       min-height: 16px;
     }
+    .toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(11,18,32,.82);
+    }
+    .toggle input { accent-color: #0b1220; }
     .actions { display: flex; justify-content: center; margin-top: 4px; }
     @media (max-width: 650px) {
       .row { grid-template-columns: 1fr; }
@@ -98,7 +106,8 @@
 
       <section class="panel">
         <h2>Comandos por ID</h2>
-        <p class="hint">Selecciona la ID del equipo y lanza la peticion. Si no hay respuesta por CORS, se abrira el endpoint en una nueva pestana.</p>
+        <p class="hint">Selecciona la ID del equipo y lanza la peticion. Puedes activar el fallback en pestana auxiliar si falla por CORS/red.</p>
+        <label class="toggle"><input id="aux-fallback-enabled" type="checkbox" /> Usar pestana auxiliar al fallar</label>
 
         <div class="rows">
           <div class="row">
@@ -155,6 +164,8 @@
     var releaseSelect = document.getElementById("release-id");
     var permissionUrl = document.getElementById("permission-url");
     var releaseUrl = document.getElementById("release-url");
+    var auxFallbackEnabledEl = document.getElementById("aux-fallback-enabled");
+    var auxTab = null;
 
     function fillIds(select) {
       for (var id = 1; id <= 12; id += 1) {
@@ -182,12 +193,42 @@
       statusEl.textContent = text;
     }
 
+    function isAuxFallbackEnabled() {
+      return !!(auxFallbackEnabledEl && auxFallbackEnabledEl.checked);
+    }
+
+    function prepareAuxTab() {
+      if (!isAuxFallbackEnabled()) {
+        return null;
+      }
+      if (!auxTab || auxTab.closed) {
+        auxTab = window.open("", "popupbuoys-cmd");
+      }
+      return auxTab;
+    }
+
+    function openCommandInAuxTab(url) {
+      if (!isAuxFallbackEnabled()) {
+        return false;
+      }
+      var tab = auxTab && !auxTab.closed ? auxTab : window.open("", "popupbuoys-cmd");
+      if (!tab) {
+        setStatus("No se pudo abrir la pestana auxiliar (bloqueador de pop-ups): " + url);
+        return false;
+      }
+      tab.location.href = url;
+      return true;
+    }
+
     async function sendCommand(url) {
       var timeoutMs = 6000;
       var controller = new AbortController();
       var timerId = setTimeout(function () {
         controller.abort();
       }, timeoutMs);
+      if (isAuxFallbackEnabled()) {
+        prepareAuxTab();
+      }
 
       setStatus("Enviando: " + url);
       try {
@@ -195,9 +236,17 @@
         setStatus("OK: " + url);
       } catch (error) {
         if (error && error.name === "AbortError") {
-          setStatus("Sin respuesta (" + timeoutMs + " ms): " + url);
+          if (isAuxFallbackEnabled() && openCommandInAuxTab(url)) {
+            setStatus("Sin respuesta (" + timeoutMs + " ms): " + url + " | Intentado tambien en pestana auxiliar.");
+          } else if (!isAuxFallbackEnabled()) {
+            setStatus("Sin respuesta (" + timeoutMs + " ms): " + url);
+          }
         } else {
-          setStatus("Error de red o CORS: " + url);
+          if (isAuxFallbackEnabled() && openCommandInAuxTab(url)) {
+            setStatus("Error de red o CORS: " + url + " | Intentado tambien en pestana auxiliar.");
+          } else if (!isAuxFallbackEnabled()) {
+            setStatus("Error de red o CORS: " + url);
+          }
         }
       } finally {
         clearTimeout(timerId);
