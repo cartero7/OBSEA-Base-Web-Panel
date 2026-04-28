@@ -34,17 +34,11 @@
     </header>
 
     <nav class="grid" aria-label="Control OBSEA">
-      <a class="item" href="http://193.146.75.174:8180/" target="_blank" rel="noopener"
-         aria-label="Dummy (se abre en una pestaña nueva)">
-        <span class="circle" aria-hidden="true"><i class="fa-solid fa-flask"></i></span>
-        <span class="label">Dummy</span>
-      </a>
-
-      <button class="item item-btn" type="button" data-modal="dev"
-              aria-label="OBSEA3 (en desarrollo)">
+      <a class="item" href="https://control.obsea.es/" target="_blank" rel="noopener"
+         aria-label="OBSEA3 (se abre en una pestaña nueva)">
         <span class="circle" aria-hidden="true"><i class="fa-solid fa-satellite-dish"></i></span>
         <span class="label">OBSEA3</span>
-      </button>
+      </a>
 
       <a class="item item-back" href="control.html" aria-label="Volver a control">
         <span class="circle" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
@@ -53,43 +47,5 @@
     </nav>
   </main>
 
-  <div class="modal" id="dev-modal" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal-card" role="document">
-      <p class="modal-title">En desarrollo</p>
-      <p class="modal-text">Esta sección estará disponible próximamente.</p>
-      <button class="modal-btn" id="close-modal" type="button">Cerrar</button>
-    </div>
-  </div>
-
-  <script>
-    var modal = document.getElementById("dev-modal");
-    var closeBtn = document.getElementById("close-modal");
-
-    function openModal() {
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
-      closeBtn.focus();
-    }
-
-    function closeModal() {
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden", "true");
-    }
-
-    document.querySelectorAll("[data-modal='dev']").forEach(function (el) {
-      el.addEventListener("click", function (e) {
-        e.preventDefault();
-        openModal();
-      });
-    });
-
-    closeBtn.addEventListener("click", closeModal);
-    modal.addEventListener("click", function (e) {
-      if (e.target === modal) closeModal();
-    });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
-    });
-  </script>
 </body>
 </html>
